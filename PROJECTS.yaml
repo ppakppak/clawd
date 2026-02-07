@@ -1,0 +1,230 @@
+# =============================================================================
+# PROJECTS.yaml - 프로젝트 레지스트리
+# =============================================================================
+# 세션 시작 시 참조하여 프로젝트 컨텍스트 빠르게 파악
+# 마지막 업데이트: 2026-02-06
+# =============================================================================
+
+projects:
+
+  # ---------------------------------------------------------------------------
+  # 🛗 승강기 (정일산업)
+  # ---------------------------------------------------------------------------
+  elevator:
+    name: 승강기 쓰러짐/싸움 감지 시스템
+    client: 정일산업
+    status: active
+    description: |
+      승강기 내 CCTV 영상으로 쓰러짐/싸움 감지
+      MediaPipe + YOLOv11-Pose 기반 실시간 추론
+    
+    hosts:
+      xavier:
+        ip: 192.168.0.29
+        ssh: xavier-elevator  # ssh xavier-elevator 로 접속
+        path: ~/projects/elevator
+        venv: ~/projects/elevator/venv
+        run: python3 main.py --web --use-yolo --source 0
+        web: http://192.168.0.29:5000
+        purpose: 엣지 추론 (Jetson AGX Orin)
+      
+      nex:
+        path: ~/pipe_projects/wareco_pipe/gpu-server/pipe_dataset/elve_exported_yolo
+        models: ~/pipe_projects/wareco_pipe/gpu-server/pipe_dataset/elve_exported_yolo/runs/train
+        videos: ~/Videos/jungil/승강기*.mp4
+        purpose: 학습/데이터 관리
+    
+    stack:
+      - YOLOv11-Pose
+      - YOLOv11L-seg
+      - MediaPipe
+      - Flask
+      - TensorRT
+      - JetPack R35.6
+    
+    docs:
+      - ~/SynologyDrive/ykpark/정일/
+      - ~/Documents/정일/
+
+  # ---------------------------------------------------------------------------
+  # 🔧 관로 점검 (K-water / 수자원기술)
+  # ---------------------------------------------------------------------------
+  pipe_inspect:
+    name: 관로 점검 AI 시스템
+    client: K-water, 수자원기술
+    status: active
+    description: |
+      상수관로 내부 영상 AI 결함 탐지 (스케일, 슬라임, 크랙 등)
+      웹앱 + 데스크톱앱 + AI 학습 파이프라인
+    
+    hosts:
+      nex:
+        apps:
+          wareco_pipe:
+            path: ~/pipe_projects/wareco_pipe
+            run: ./start.sh
+            web: http://localhost:5001
+            purpose: 메인 라벨링/추론 플랫폼
+          
+          local_pipe_inspect:
+            path: ~/local_pipe_inspect
+            run: npm run dev
+            purpose: K-water 데모 웹앱
+          
+          pipe_inspector_electron:
+            path: ~/pipe-inspector-electron
+            run: npm start
+            purpose: 데스크톱 앱 (Electron)
+        
+        datasets: ~/pipe_projects/wareco_pipe/gpu-server/pipe_dataset/
+        models: ~/pipe_projects/wareco_pipe/gpu-server/*.pt
+    
+    stack:
+      - YOLOv11-seg
+      - Grounded-SAM
+      - Flask
+      - Electron
+      - React
+      - Python
+    
+    classes:
+      - scale (스케일)
+      - slime (슬라임)
+      - crack (크랙)
+      - deformation (변형)
+      - normal (정상)
+
+  # ---------------------------------------------------------------------------
+  # 📈 주식 트레이딩
+  # ---------------------------------------------------------------------------
+  stock:
+    name: 주식 자동매매 시스템
+    status: active
+    description: |
+      한국투자증권 API 기반 자동매매
+      딥바이 전략 (삼성전자, 현대차, 두산에너빌리티)
+    
+    hosts:
+      mac:
+        ip: 192.168.0.18
+        ssh: ppak@192.168.0.18
+        path: ~/개발/stock
+        run: |
+          cd ~/개발/stock
+          source venv/bin/activate
+          python backend/main.py
+        purpose: 실운영 (딥바이 v3.1)
+      
+      nex:
+        path: ~/stock
+        purpose: 개발/테스트 (구버전)
+        config: ~/KIS/config/
+    
+    stack:
+      - Python
+      - FastAPI
+      - KIS API
+      - React (Frontend)
+    
+    schedule:
+      삼성전자: 10분 간격
+      현대차: 30분 간격 (:19, :49)
+      두산에너빌리티: 30분 간격
+
+  # ---------------------------------------------------------------------------
+  # 📝 AX혁신기업 제안서
+  # ---------------------------------------------------------------------------
+  ax_proposal:
+    name: AX혁신기업창의기술개발사업 제안서
+    client: 수자원기술 (주관), 인튜웍스 (공동)
+    status: in_progress
+    description: |
+      관로 점검 로봇 + AI 자동판독 + 3D 좌표화
+      지원규모: 647.5백만원 (2년)
+    
+    hosts:
+      nex:
+        docs: ~/Documents/카카오톡 받은 파일/
+        main_file: 붙임1-1. (필수) 신청용 연구개발계획서(AX혁신기업창의기술개발사업) v1_filled.docx
+        google_docs: https://docs.google.com/document/d/1-xxx  # 필요시 업데이트
+    
+    keywords:
+      korean:
+        - 상수관로 점검
+        - 관로 로봇
+        - AI 결함탐지
+        - 3D LiDAR
+        - SLAM
+      english:
+        - Water Pipeline Inspection
+        - Pipe Robot
+        - AI Defect Detection
+        - 3D LiDAR
+        - SLAM
+    
+    tasks:
+      done:
+        - 페이지 번호 삽입
+        - 핵심어 테이블 분리 및 초록색 적용
+      pending:
+        - 요약문 작성 (1쪽)
+        - 개발 일정표 채우기 (8-9페이지)
+
+  # ---------------------------------------------------------------------------
+  # 🤖 Clawdbot
+  # ---------------------------------------------------------------------------
+  clawd:
+    name: Clawdbot 워크스페이스
+    status: active
+    description: AI 어시스턴트 워크스페이스 (메모리, 설정, 프로젝트 관리)
+    
+    hosts:
+      nex:
+        path: ~/clawd
+        memory: ~/clawd/memory/
+        config: ~/.clawdbot/
+    
+    files:
+      - AGENTS.md
+      - SOUL.md
+      - PROJECTS.yaml  # 이 파일
+      - memory/*.md
+
+# =============================================================================
+# 호스트 정보
+# =============================================================================
+hosts:
+  nex:
+    type: server
+    os: Ubuntu Linux
+    ip: localhost
+    description: 메인 개발 서버
+  
+  mac:
+    type: desktop
+    os: macOS
+    ip: 192.168.0.18
+    user: ppak
+    description: 맥북 (주식 실운영)
+  
+  xavier:
+    type: edge
+    os: JetPack (Ubuntu + Tegra)
+    ip: 192.168.0.29
+    user: ppak
+    ssh_alias: xavier, xavier-elevator
+    description: Jetson AGX Orin (엣지 추론)
+
+# =============================================================================
+# 빠른 참조
+# =============================================================================
+# 프로젝트 전환 시:
+#   1. 이 파일에서 프로젝트 찾기
+#   2. hosts 섹션에서 작업할 호스트 확인
+#   3. path, run, web 등 필요한 정보 참조
+#
+# 새 프로젝트 추가 시:
+#   1. projects 섹션에 새 항목 추가
+#   2. hosts, stack, description 등 기본 정보 채우기
+#   3. 필요시 hosts 섹션에 새 호스트 추가
+# =============================================================================
