@@ -18,7 +18,8 @@ Skills define *how* tools work. This file is for *your* specifics — the stuff 
 |---------|--------|------|--------|
 | stock | Mac | ~/개발/stock | ppakppak/stock |
 | elevator | xavier | ~/projects/elevator | ppakppak/elevator |
-| pipe-inspect | samtel | ~/projects/pipe-inspect | ppakppak/pipe-inspect |
+| pipe-inspector-electron | samtel | ~/projects/pipe-inspector-electron | ppakppak/pipe-inspect |
+| clawd | nex | ~/clawd | ppakppak/clawd |
 | clawd-logs | nex | ~/clawd/clawd-logs | ppakppak/clawd-logs |
 
 ---
