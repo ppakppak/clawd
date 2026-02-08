@@ -42,6 +42,24 @@ ssh intu@192.168.0.32 "cd ~/projects/pipe-inspect && git add -A && git commit -m
 
 ---
 
+## 📬 Google 연동
+
+### Gmail
+```bash
+/home/ppak/miniconda3/bin/python ~/clawd/scripts/gmail-check.py [개수]
+```
+- Credentials: `~/clawd/.credentials/google-oauth.json`
+- Token: `~/clawd/.credentials/gmail-token.pickle`
+
+### Google Calendar
+```bash
+gcalcli agenda          # 다가오는 일정
+gcalcli list            # 캘린더 목록
+gcalcli calw            # 주간 뷰
+```
+
+---
+
 ## 🗂️ 기타
 
 ### TTS
