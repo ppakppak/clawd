@@ -42,6 +42,17 @@ ssh intu@192.168.0.32 "cd ~/projects/pipe-inspect && git add -A && git commit -m
 
 ---
 
+## 📱 Telegram
+- Bot: iljo (@iljo_bot)
+- Chat ID: 1786192505 (Young Key Park @ppakppak)
+
+## 💬 카카오톡 공유 폴더
+- 경로: `/home/ppak/Documents/katok_talk`
+- 용도: 업무 관련 카톡 내용 저장 → 분석/정리 요청 시 참조
+- 형식: 카톡 내보내기 txt 파일 또는 메모
+
+---
+
 ## 📬 Google 연동
 
 ### Gmail
