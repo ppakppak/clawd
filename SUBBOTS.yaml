@@ -1,0 +1,88 @@
+# SUBBOTS.yaml - 서브봇 레지스트리
+# 메인 세션에서 서브봇 라우팅 및 관리에 사용
+
+subbots:
+  stock:
+    label: "stock"
+    name: "주식봇"
+    emoji: "📈"
+    description: "주식 자동매매, 시황 분석, 포트폴리오 관리"
+    workspace: "/Users/ppak/개발/stock"
+    host: "Mac (192.168.0.18)"
+    keywords:
+      - 주식
+      - 매매
+      - 종목
+      - 수익률
+      - 삼성전자
+      - KIS
+      - 딥바이
+      - 포트폴리오
+      - 매수
+      - 매도
+    config: "~/clawd/agents/stock/AGENT.md"
+
+  project:
+    label: "project"
+    name: "과제봇"
+    emoji: "📋"
+    description: "산학연 과제, 정부과제, 일정/마감 관리"
+    workspace: "~/clawd"
+    keywords:
+      - 과제
+      - 산학연
+      - 마감
+      - 보고서
+      - 협약
+      - 중기부
+      - AI바우처
+      - 수자원
+      - 인튜
+      - 삼텔
+      - 제안서
+      - 평가
+    config: "~/clawd/agents/project/AGENT.md"
+    context_files:
+      - "~/clawd/Documents/katok_talk/"
+
+  dev:
+    label: "dev"
+    name: "개발봇"
+    emoji: "💻"
+    description: "코딩, 디버깅, 코드리뷰, 서버 관리"
+    workspace: "~/clawd"
+    keywords:
+      - 코드
+      - 버그
+      - 배포
+      - git
+      - 서버
+      - 개발
+      - API
+      - 디버깅
+      - 에러
+      - SSH
+    config: "~/clawd/agents/dev/AGENT.md"
+    hosts:
+      - name: "Mac"
+        ip: "192.168.0.18"
+        user: "ppak"
+        projects: ["stock"]
+      - name: "xavier"
+        ip: "192.168.0.29"
+        user: "ppak"
+        projects: ["elevator"]
+      - name: "samtel"
+        ip: "192.168.0.32"
+        user: "intu"
+        projects: ["pipe-inspector-electron"]
+
+# 새 서브봇 추가 템플릿
+# new_bot:
+#   label: "new_bot"
+#   name: "새봇"
+#   emoji: "🆕"
+#   description: "설명"
+#   workspace: "~/path"
+#   keywords: []
+#   config: "~/clawd/agents/new_bot/AGENT.md"
