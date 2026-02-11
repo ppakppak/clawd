@@ -7,6 +7,7 @@
 ## ☀️ 모닝 브리핑
 - 시간: 08:00 ~ 10:00 (하루 1회)
 - 내용:
+  - 🇺🇸 지난밤 미국 증시 (S&P500, 나스닥, 다우)
   - 오늘 캘린더 일정
   - 읽지 않은 중요 메일 요약
   - 날씨 (외출 예정 있으면)
@@ -38,6 +39,9 @@
 
 ## 체크 명령어
 ```bash
+# 미국 증시 (Yahoo Finance)
+curl -s "https://query1.finance.yahoo.com/v8/finance/chart/^GSPC" | python3 -c "import json,sys; d=json.load(sys.stdin); m=d['chart']['result'][0]['meta']; print(f\"S&P500: {m['regularMarketPrice']:,.2f} ({(m['regularMarketPrice']/m['previousClose']-1)*100:+.2f}%)\")"
+
 # 캘린더
 gcalcli agenda --nocolor
 
