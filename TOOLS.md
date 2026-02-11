@@ -81,4 +81,32 @@ gcalcli calw            # 주간 뷰
 
 ---
 
+## 🧠 RAGFlow 장기 기억
+
+### 접속
+- **웹 UI**: http://localhost:9390
+- **API**: http://localhost:9385
+- **Dataset**: `clawd-memory` (ID: eca02df2075811f1b4260b2d9b7e8ea5)
+
+### 스크립트
+```bash
+# 검색
+~/clawd/scripts/ragflow-search.sh "검색어"
+
+# 동기화 (새 파일 업로드 + 파싱)
+~/clawd/scripts/ragflow-sync.sh
+
+# 강제 전체 동기화
+~/clawd/scripts/ragflow-sync.sh --force
+```
+
+### 자동 동기화
+- Cron: 매일 22:00 자동 실행
+
+### 인덱싱된 데이터
+- `~/clawd/memory/*.md` - 일일 메모
+- `~/clawd/clawd-logs/daily/*.md` - 대화 로그
+
+---
+
 Add whatever helps you do your job. This is your cheat sheet.
