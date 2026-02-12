@@ -43,7 +43,7 @@ interactive_agent() {
         
         # 에이전트 호출
         echo -e "${EMOJI} ${GREEN}${NAME}:${NC}"
-        clawdbot agent --agent "$AGENT_ID" --message "$input" 2>&1
+        openclaw agent --agent "$AGENT_ID" --message "$input" 2>&1
         echo ""
     done
 }
@@ -104,8 +104,8 @@ case "$1" in
         echo -e "${RED}서브봇 세션 종료됨${NC}"
         ;;
     status)
-        echo -e "${CYAN}=== Clawdbot 에이전트 현황 ===${NC}"
-        clawdbot agents list
+        echo -e "${CYAN}=== OpenClaw 에이전트 현황 ===${NC}"
+        openclaw agents list
         echo ""
         if tmux has-session -t $SESSION_NAME 2>/dev/null; then
             echo -e "${GREEN}✅ tmux 세션 실행 중${NC}"
