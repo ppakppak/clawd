@@ -46,10 +46,29 @@ ssh intu@192.168.0.32 "cd ~/projects/pipe-inspect && git add -A && git commit -m
 - Bot: iljo (@iljo_bot)
 - Chat ID: 1786192505 (Young Key Park @ppakppak)
 
-## 💬 카카오톡 공유 폴더
-- 경로: `/home/ppak/Documents/katok_talk`
-- 용도: 업무 관련 카톡 내용 저장 → 분석/정리 요청 시 참조
-- 형식: 카톡 내보내기 txt 파일 또는 메모
+## 💬 카카오톡 자동 분석
+
+### 폴더
+- **Wine 카톡 받은 파일**: `~/.wine/drive_c/users/ppak/Documents/`
+- **카톡 대화 내보내기**: `~/Documents/katok_talk/`
+- **분석 결과**: `~/clawd/katok-analysis/`
+
+### 자동 감시 서비스
+```bash
+# 상태 확인
+systemctl --user status katok-watcher
+
+# 로그 확인
+tail -f ~/clawd/logs/katok-watcher.log
+
+# 수동 분석 (최근 7일 파일)
+~/clawd/scripts/katok-watcher.sh test
+```
+
+### 지원 파일
+- HWP → hwp5txt
+- PDF → pdftotext
+- TXT (카톡 대화) → 파싱 + 메시지 수 카운트
 
 ---
 

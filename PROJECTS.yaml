@@ -50,7 +50,7 @@ projects:
   # 🔧 관로 점검 (K-water / 수자원기술)
   # ---------------------------------------------------------------------------
   pipe_inspect:
-    name: 관로 점검 AI 시스템
+    name: 관로 점검 AI 시스템 (iPipeCheck)
     client: K-water, 수자원기술
     status: active
     description: |
@@ -58,6 +58,24 @@ projects:
       웹앱 + 데스크톱앱 + AI 학습 파이프라인
     
     hosts:
+      samtel:
+        ip: 192.168.0.32
+        user: intu
+        ssh: intu@192.168.0.32
+        apps:
+          production:
+            path: ~/projects/pipe-inspector-electron
+            port: 5003
+            web: http://192.168.0.32:5003
+            purpose: 운영 서버
+          staging:
+            path: ~/projects/pipe-inspector-staging
+            port: 5005
+            gpu_port: 5006
+            web: http://192.168.0.32:5005
+            purpose: 스테이징 (테스트/개발)
+        gpu_server: ~/projects/pipe-inspector-electron/gpu-server
+      
       nex:
         apps:
           wareco_pipe:
@@ -171,6 +189,42 @@ projects:
         - 개발 일정표 채우기 (8-9페이지)
 
   # ---------------------------------------------------------------------------
+  # 🐄 소 발정탐지 (Cattle Estrus Detection)
+  # ---------------------------------------------------------------------------
+  cattle_estrus:
+    name: 소 발정탐지 AI 시스템
+    status: active
+    description: |
+      소 행동 분석으로 발정 감지
+      YOLOv8 + DeepSORT + 승가 행동 분석
+      웹 UI로 실시간 모니터링
+    
+    hosts:
+      nex:
+        path: ~/projects/cattle-estrus-detection
+        run: |
+          cd ~/projects/cattle-estrus-detection
+          source venv/bin/activate
+          python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000
+        web: http://localhost:8000
+        cursor_project: ~/.cursor/projects/home-ppak-SynologyDrive2-projects-Cow-cattle-watch
+        gemini_brain: ~/.gemini/antigravity/brain/e12004fc-83a0-4882-9a3a-bf71a76caa4a/cattle_watch
+        dataset: ~/Dropbox/Company/cow/Cattle.v1i.yolov11
+        trained_model: ~/projects/cattle-estrus-detection/runs/train/cattle_v1/weights/best.pt
+        purpose: 개발/학습
+    
+    stack:
+      - YOLOv8
+      - DeepSORT
+      - FastAPI
+      - React
+      - WebSocket
+      - TailwindCSS
+    
+    related_paths:
+      - ~/SynologyDrive2/projects/Cow/cattle-watch
+
+  # ---------------------------------------------------------------------------
   # 🤖 Clawdbot
   # ---------------------------------------------------------------------------
   clawd:
@@ -214,6 +268,13 @@ hosts:
     user: ppak
     ssh_alias: xavier, xavier-elevator
     description: Jetson AGX Orin (엣지 추론)
+  
+  samtel:
+    type: server
+    os: Ubuntu Linux
+    ip: 192.168.0.32
+    user: intu
+    description: 삼텔랩스 서버 (관로점검 운영/스테이징)
 
 # =============================================================================
 # 빠른 참조

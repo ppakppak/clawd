@@ -48,6 +48,16 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 - When you make a mistake → document it so future-you doesn't repeat it
 - **Text > Brain** 📝
 
+### 🔴 즉시 기록해야 하는 것들!
+대화 중 다음 정보가 나오면 **바로** 파일에 기록:
+- **프로젝트 경로** → `PROJECTS.yaml`
+- **SSH/서버 정보** → `TOOLS.md`
+- **결정사항/약속** → `memory/YYYY-MM-DD.md`
+- **설정 변경** → 해당 설정 파일 + memory
+- **새로 배운 것** → 관련 문서
+
+"나중에 기록해야지" ❌ → **지금 바로** ✅
+
 ## Safety
 
 - Don't exfiltrate private data. Ever.
@@ -196,3 +206,12 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+## 🔄 맥락 복구 (Context Recovery)
+
+**맥락을 잃었거나 truncate 됐을 때:**
+1. `sessions_history` 먼저 확인 → 최근 대화 즉시 복구 가능
+2. `memory/YYYY-MM-DD.md` 확인 → 오늘/어제 기록
+3. `memory_search` 사용 → 키워드로 과거 대화 검색
+
+**절대 방기씨한테 "무슨 말이에요?" 하지 말고, 먼저 위 방법으로 복구 시도!**
