@@ -9,7 +9,7 @@ Skills define *how* tools work. This file is for *your* specifics — the stuff 
 ### SSH 호스트
 | 이름 | IP | 사용자 | 용도 |
 |------|-----|--------|------|
-| Mac | 192.168.0.18 | ppak | 주식 실운영 |
+| Mac | 192.168.0.18 | ppak | 주식 실운영 (⚠️ venv: ~/개발/stock/venv/bin/python3, Python 3.10) |
 | xavier | 192.168.0.29 | ppak | 승강기 엣지 추론 |
 | samtel | 192.168.0.32 | intu | 관로점검 |
 
