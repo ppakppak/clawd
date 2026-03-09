@@ -1,0 +1,28 @@
+upload_fail	네이쳐원/(서식1) 사업계획서(소상공인분과)_2023년 AI바우처 지원사업.hwp	direct-upload	(서식1) 사업계획서(소상공인분과)_2023년 AI바우처 지원사업.hwp: This type of file has not been supported yet!
+convert_fail	네이쳐원/(서식1) 사업계획서(소상공인분과)_2023년 AI바우처 지원사업.hwp	hwp5txt	hwp5txt_failed
+convert_fail	네이쳐원/(서식1) 사업계획서(소상공인분과)_2023년 AI바우처 지원사업.hwp	soffice-txt	no_output
+final_fail	네이쳐원/(서식1) 사업계획서(소상공인분과)_2023년 AI바우처 지원사업.hwp	all_methods	unrecoverable
+upload_fail	230318_0500_사업계획서(취합).pdf	direct-upload	230318_0500_사업계획서(취합).pdf: No /Root object! - Is this really a PDF?
+convert_fail	230318_0500_사업계획서(취합).pdf	pdftotext	pdftotext_failed
+convert_fail	230318_0500_사업계획서(취합).pdf	gs-repair	gs_failed
+final_fail	230318_0500_사업계획서(취합).pdf	all_methods	unrecoverable
+upload_fail	한국인터넷통신/gesture-recognition-csi/WNFA_Final_Project_Report.pdf	direct-upload	WNFA_Final_Project_Report.pdf: No /Root object! - Is this really a PDF?
+convert_fail	한국인터넷통신/gesture-recognition-csi/WNFA_Final_Project_Report.pdf	pdftotext	pdftotext_failed
+convert_fail	한국인터넷통신/gesture-recognition-csi/WNFA_Final_Project_Report.pdf	gs-repair	gs_failed
+final_fail	한국인터넷통신/gesture-recognition-csi/WNFA_Final_Project_Report.pdf	all_methods	unrecoverable
+upload_fail	한국인터넷통신/ ktit3.hwp	direct-upload	 ktit3.hwp: This type of file has not been supported yet!
+convert_fail	한국인터넷통신/ ktit3.hwp	hwp5txt	hwp5txt_failed
+convert_fail	한국인터넷통신/ ktit3.hwp	soffice-txt	no_output
+final_fail	한국인터넷통신/ ktit3.hwp	all_methods	unrecoverable
+upload_fail	한국인터넷통신/ ktit.hwp	direct-upload	 ktit.hwp: This type of file has not been supported yet!
+convert_fail	한국인터넷통신/ ktit.hwp	hwp5txt	hwp5txt_failed
+convert_fail	한국인터넷통신/ ktit.hwp	soffice-txt	no_output
+final_fail	한국인터넷통신/ ktit.hwp	all_methods	unrecoverable
+upload_fail	tl_biz/티엘비즈 - 과제협의서 (12개사)/01. 과제협의서 - (주)휴먼아이티.pdf	direct-upload	01. 과제협의서 - (주)휴먼아이티.pdf: No /Root object! - Is this really a PDF?
+convert_fail	tl_biz/티엘비즈 - 과제협의서 (12개사)/01. 과제협의서 - (주)휴먼아이티.pdf	pdftotext	pdftotext_failed
+convert_fail	tl_biz/티엘비즈 - 과제협의서 (12개사)/01. 과제협의서 - (주)휴먼아이티.pdf	gs-repair	gs_failed
+final_fail	tl_biz/티엘비즈 - 과제협의서 (12개사)/01. 과제협의서 - (주)휴먼아이티.pdf	all_methods	unrecoverable
+upload_fail	tl_biz/티엘비즈 - 과제협의서 (12개사)/02. 과제협의서 - 스파코 주식회사.pdf	direct-upload	02. 과제협의서 - 스파코 주식회사.pdf: No /Root object! - Is this really a PDF?
+convert_fail	tl_biz/티엘비즈 - 과제협의서 (12개사)/02. 과제협의서 - 스파코 주식회사.pdf	pdftotext	pdftotext_failed
+convert_fail	tl_biz/티엘비즈 - 과제협의서 (12개사)/02. 과제협의서 - 스파코 주식회사.pdf	gs-repair	gs_failed
+final_fail	tl_biz/티엘비즈 - 과제협의서 (12개사)/02. 과제협의서 - 스파코 주식회사.pdf	all_methods	unrecoverable

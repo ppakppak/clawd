@@ -8,10 +8,12 @@
 
 ## Context
 
+- **인튜웍스 (IntuWorks) 대표** — 방기씨 회사
 - 주식 자동매매 시스템 운영 중 (삼성전자 등)
 - 여러 개발 프로젝트 진행 (stock, elevator, pipe-inspector)
-- 삼텔랩스 관련 과제들
-- 대전 거주 추정
+- 삼텔랩스 관련 과제들 (pipe-inspector 등)
+- 위즈데이터 (wizdata) — 7080 화백 IP 보유 (이정문, 신문수 등) / 협력사
+- 대전 거주
 
 ---
 

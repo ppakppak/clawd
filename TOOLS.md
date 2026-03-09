@@ -12,6 +12,7 @@ Skills define *how* tools work. This file is for *your* specifics — the stuff 
 | Mac | 192.168.0.18 | ppak | 주식 실운영 (⚠️ venv: ~/개발/stock/venv/bin/python3, Python 3.10) |
 | xavier | 192.168.0.29 | ppak | 승강기 엣지 추론 |
 | samtel | 192.168.0.32 | intu | 관로점검 |
+| wasvr | 100.72.127.29 (Tailscale) | lmj | 수자원기술 서버 |
 
 ### Git 레포지토리
 | 프로젝트 | 호스트 | 경로 | GitHub |
@@ -19,6 +20,11 @@ Skills define *how* tools work. This file is for *your* specifics — the stuff 
 | stock | Mac | ~/개발/stock | ppakppak/stock |
 | elevator | xavier | ~/projects/elevator | ppakppak/elevator |
 | pipe-inspector-electron | samtel | ~/projects/pipe-inspector-electron | ppakppak/pipe-inspect |
+
+### pipe-inspector 개발 원칙
+- **반드시 staging에서 개발/테스트 → 검증 후 production 배포**
+- Production (`pipe-inspector-electron`): 포트 5003/5004 — K-water 팀 실사용 중, 직접 수정 금지
+- Staging (`pipe-inspector-staging`): 포트 5005/5006 — 개발/테스트 여기서
 | clawd | nex | ~/clawd | ppakppak/clawd |
 | clawd-logs | nex | ~/clawd/clawd-logs | ppakppak/clawd-logs |
 
@@ -96,7 +102,24 @@ gcalcli calw            # 주간 뷰
 - Preferred voice: (미설정)
 
 ### Cameras
-- (미설정)
+- 승강기 네트워크 카메라: `192.168.0.72` (RTSP 554)
+- 확인된 스트림 경로: `/stream1`, `/stream2`, `/h264/ch1/main/av_stream`, `/h264/ch1/sub/av_stream`
+- 승강기 서비스 기본 소스(현재 적용): `rtsp://<id>:<password>@192.168.0.72:554/stream2`
+- 운영 서비스(4채널):
+  - `systemctl --user status elevator-ds-webcam.service`
+  - `systemctl --user status elevator-ds-rtsp.service`
+  - `systemctl --user status elevator-ds-video1.service`
+  - `systemctl --user status elevator-ds-video2.service`
+- 미리보기 서비스(포트):
+  - `elevator-preview-webcam.service` → `:5000`
+  - `elevator-preview-rtsp.service` → `:5001`
+  - `elevator-preview-video1.service` → `:5002`
+  - `elevator-preview-video2.service` → `:5003`
+- 통합 대시보드: `elevator-dashboard.service` → `:7000`
+  - URL: `http://192.168.0.29:7000`
+  - API: `/api/events`, `/api/health`
+- 참고: USB webcam(`/dev/video0`)은 단일 점유라 DeepStream(webcam 채널)과 preview 동시 사용 불가
+  - 현재 운영: webcam은 preview(`:5000`) 우선, `elevator-ds-webcam.service`는 비활성
 
 ---
 
